@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Een vraagje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage-wrap">
+
+    <!-- Achtergrond laag: zwevende hartjes (canvas-vrij, puur DOM) -->
+    <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
+
+    <!-- STAP 1: Opener -->
+    <section class="stage" id="stage-intro" data-active="true">
+        <h1 class="question">Hey Roos</h1>
+        <p class="question">👉👈</p>
+        <h1 class="question">Ik zou je<br>iets willen vragen</h1>
+        <div class="button-row button-row--single">
+            <button class="btn btn-yes" id="btnStart" type="button">Vertel...</button>
+        </div>
+    </section>
+
+    <!-- STAP 2: Hint 1 -->
+    <section class="stage" id="stage-hint1" data-active="false">
+        <p class="eyebrow">Eerst nog even</p>
+        <h2 class="question">Ik heb gehoord dat je in het echt nog leuker bent</h2>
+        <div class="button-row button-row--single">
+            <button class="btn btn-yes" id="btnHint1Next" type="button">Vertel meer</button>
+        </div>
+    </section>
+
+    <!-- STAP 3: Hint 2 -->
+    <section class="stage" id="stage-hint2" data-active="false">
+        <p class="eyebrow">Dus...</p>
+        <h2 class="question">Dan is het gewoon logisch om te vragen</h2>
+        <div class="button-row button-row--single">
+            <button class="btn btn-yes" id="btnHint2Next" type="button">Wat dan?</button>
+        </div>
+    </section>
+
+    <!-- STAP 4: Hint 3 -->
+    <section class="stage" id="stage-hint3" data-active="false">
+        <h2 class="question question--small">Nie verschieten!</h2>
+        <div class="button-row button-row--single">
+            <button class="btn btn-yes" id="btnHint3Next" type="button">Zeg het maar</button>
+        </div>
+    </section>
+
+    <!-- STAP 5: De vraag -->
+    <section class="stage" id="stage-ask" data-active="false">
+        <p class="eyebrow">Denk er heel goed over na hé</p>
+        <h1 class="question">Eens afspreken?</h1>
+        <div class="button-row" id="buttonRow">
+            <button class="btn btn-yes" id="btnYes" type="button">Ja ❤️</button>
+            <button class="btn btn-no" id="btnNo" type="button">Nee</button>
+        </div>
+        <p class="taunt-text" id="tauntText" aria-live="polite"></p>
+    </section>
+
+    <!-- STAP 6: Hartjes-bevestiging tussenscherm -->
+    <section class="stage" id="stage-celebrate" data-active="false">
+        <div class="big-heart" aria-hidden="true">❤️</div>
+        <h2 class="celebrate-text">Ik wist het.</h2>
+        <p class="subtext">Eén ding nog…</p>
+    </section>
+
+    <!-- STAP 7: Datum- en tijdkeuze -->
+    <section class="stage" id="stage-date" data-active="false">
+        <p class="eyebrow">laatste stap</p>
+        <h2 class="question question--small">Wanneer spreken we af?</h2>
+        <div class="date-form">
+            <div class="date-fields-row">
+                <div class="date-field">
+                    <label for="dateInput" class="date-label">Datum</label>
+                    <input type="date" id="dateInput" class="date-input" autocomplete="off">
+                </div>
+                <div class="date-field">
+                    <label for="timeInput" class="date-label">Tijdstip</label>
+                    <input type="time" id="timeInput" class="date-input" autocomplete="off">
+                </div>
+            </div>
+            <button class="btn btn-yes btn-confirm" id="btnConfirmDate" type="button" disabled>Vastleggen</button>
+        </div>
+        <p class="error-text" id="dateError" aria-live="polite"></p>
+    </section>
+
+    <!-- STAP 8: Eindscherm -->
+    <section class="stage" id="stage-final" data-active="false">
+        <div class="big-heart" aria-hidden="true">🎉</div>
+        <h2 class="celebrate-text">Afgesproken.</h2>
+        <p class="final-date" id="finalDateText"></p>
+        <p class="subtext">Het staat al vastgeprikt in mijn agenda</p>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
